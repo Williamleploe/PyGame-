@@ -1,50 +1,21 @@
-import pygame
-import sys
+# import pygame  # On importe la bibliothèque pygame
 
-# Initialisation
-pygame.init()
+# pygame.init()  # On initialise tous les modules nécessaires de pygame (fenêtre, sons, etc.)
 
-# Création de la fenêtre
-largeur, hauteur = 640, 480
-screen = pygame.display.set_mode((largeur, hauteur))
-pygame.display.set_caption("Exemple Pygame")
+# # On crée une fenêtre de 600 pixels de large sur 400 pixels de haut
+# pygame.display.set_mode((600, 400))
 
-# Couleurs (R, G, B)
-BLANC = (255, 255, 255)
-ROUGE = (255, 0, 0)
+# # On définit une variable de contrôle pour maintenir la boucle du jeu en marche
+# running = True  
 
-# Position et vitesse du cercle
-x, y = largeur // 2, hauteur // 2
-vitesse_x, vitesse_y = 3, 2
-rayon = 30
+# # Boucle principale du jeu (tant que 'running' est True, la fenêtre reste ouverte)
+# while running:
+#     # On récupère tous les événements générés (clavier, souris, fermeture de fenêtre, etc.)
+#     for event in pygame.event.get():
+#         # Si l’événement est de type "QUIT" (clic sur la croix rouge de la fenêtre)
+#         if event.type == pygame.QUIT:
+#             # On change la variable pour sortir de la boucle
+#             running = False
 
-# Boucle principale
-clock = pygame.time.Clock()
-running = True
-while running:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
-
-    # Déplacer le cercle
-    x += vitesse_x
-    y += vitesse_y
-
-    # Rebondir sur les bords
-    if x - rayon < 0 or x + rayon > largeur:
-        vitesse_x = -vitesse_x
-    if y - rayon < 0 or y + rayon > hauteur:
-        vitesse_y = -vitesse_y
-
-    # Remplir l'écran
-    screen.fill(BLANC)
-
-    # Dessiner le cercle
-    pygame.draw.circle(screen, ROUGE, (x, y), rayon)
-
-    # Mettre à jour l'écran
-    pygame.display.flip()
-    clock.tick(60)  # 60 FPS
-
-pygame.quit()
-sys.exit()
+# # Quand on sort de la boucle, on ferme proprement pygame
+# pygame.quit()

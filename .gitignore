@@ -1,2 +1,4 @@
 ./test/*
 ./test
+.vscode
+class/__pycache__
