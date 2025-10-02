@@ -1,0 +1,23 @@
+{
+  "ogmoVersion": "3.4.0",
+  "width": 1969,
+  "height": 1146,
+  "offsetX": 0,
+  "offsetY": 0,
+  "values": {"salutmondecruel": "hello"},
+  "layers": [
+    {
+      "name": "background",
+      "_eid": "39409892",
+      "offsetX": 0,
+      "offsetY": 0,
+      "gridCellWidth": 8,
+      "gridCellHeight": 8,
+      "gridCellsX": 248,
+      "gridCellsY": 145,
+      "entities": [
+        {"name": "Background", "id": 0, "_eid": "39437627", "x": 16, "y": 16, "width": 1920, "height": 1080, "originX": 0, "originY": 0}
+      ]
+    }
+  ]
+}
