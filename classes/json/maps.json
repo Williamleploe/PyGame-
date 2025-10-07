@@ -1,0 +1,46 @@
+[
+    {
+        "preview": "assets/background/cave_1/Preview 1.png",
+        "name": "cave_1",
+        "plans": {
+            "1": "assets/background/cave_1/Plan 1.png",
+            "2": "assets/background/cave_1/Plan 2.png",
+            "3": "assets/background/cave_1/Plan 3.png",
+            "4": "assets/background/cave_1/Plan 4.png",
+            "5": "assets/background/cave_1/Plan 5.png"
+        }
+    },
+    {
+        "preview": "assets/background/cave_2/Preview 3.png",
+        "name": "cave_2",
+        "plans": {
+            "1": "assets/background/cave_2/Plan 1.png",
+            "2": "assets/background/cave_2/Plan 2.png",
+            "3": "assets/background/cave_2/Plan 3.png",
+            "4": "assets/background/cave_2/Plan 4.png",
+            "5": "assets/background/cave_2/Plan 5.png"
+        }
+    },
+    {
+        "preview": "assets/background/jungle_1/Preview 1.png",
+        "name": "jungle_1",
+        "plans": {
+            "1": "assets/background/jungle_1/Plan 1.png",
+            "2": "assets/background/jungle_1/Plan 2.png",
+            "3": "assets/background/jungle_1/Plan 3.png",
+            "4": "assets/background/jungle_1/Plan 4.png",
+            "5": "assets/background/jungle_1/Plan 5.png"
+        }
+    },
+    {
+        "preview": "assets/background/jungle_2/Preview 2.png",
+        "name": "jungle_2",
+        "plans": {
+            "1": "assets/background/jungle_2/Plan 1.png",
+            "2": "assets/background/jungle_2/Plan 2.png",
+            "3": "assets/background/jungle_2/Plan 3.png",
+            "4": "assets/background/jungle_2/Plan 4.png",
+            "5": "assets/background/jungle_2/Plan 5.png"
+        }
+    }
+]

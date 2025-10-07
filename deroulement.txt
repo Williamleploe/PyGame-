@@ -1,0 +1,7 @@
+- Menu principal ( Visuel : OK , Fonctionnel : A faire )
+- Choix des personnages 
+- Choix de la map 
+- Combat (attaques , defense , mouvement , animation , son)
+- K.O et Vainqueur 
+- Replay (meme persos , meme map)
+- Exit (menu principal)
