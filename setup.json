@@ -1,0 +1,30 @@
+{
+  "map": {
+    "background": "assets/background/cave_1/Preview 1.png",
+    "plan": "assets/background/cave_1/Plan 1.png"
+  },
+  "players": [
+    {
+      "id": 1,
+      "name": "Converted_Vampire",
+      "path": "assets/perso/Converted_Vampire",
+      "idle_image": "assets/perso/Converted_Vampire/idle/00.png",
+      "position": "left",
+      "type_personnage": "melee",
+      "health": 100,
+      "energy": 50,
+      "score": 0
+    },
+    {
+      "id": 2,
+      "name": "Countess_Vampire",
+      "path": "assets/perso/Countess_Vampire",
+      "idle_image": "assets/perso/Countess_Vampire/idle/00.png",
+      "position": "right",
+      "type_personnage": "range",
+      "health": 100,
+      "energy": 50,
+      "score": 0
+    }
+  ]
+}

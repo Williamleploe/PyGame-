@@ -1,41 +1,67 @@
 import pygame
+import json
+import os
 pygame.init()
 
 class MainMenu:
     def __init__(self, game):
         self.game = game
-        self.screen_width = 1280
-        self.screen_height = 720
+        self.WIDTH = 1280
+        self.HEIGHT = 720
         self.buttons = []
+        self.background = None
+        self.title = None
+        self.title_rect = None
         self.setup_background()
         self.setup_buttons()
 
     def setup_background(self):
-        # 💡 tu peux changer le fond ici si tu veux un autre visuel pour le menu
-        self.background = pygame.Surface((self.screen_width, self.screen_height))
-        self.background.fill((10, 10, 30))  # fond sombre stylé
+        self.background = pygame.Surface((self.WIDTH, self.HEIGHT))
+        self.background.fill((0, 0, 0))
         font = pygame.font.Font(None, 100)
         self.title = font.render("FIGHTING GAME", True, (255, 0, 0))
-        self.title_rect = self.title.get_rect(center=(self.screen_width // 2, 150))
+        self.title_rect = self.title.get_rect(center=(self.WIDTH // 2, 150))
 
     def setup_buttons(self):
+        self.buttons = []
         font = pygame.font.Font(None, 60)
-        play_button = pygame.Rect(self.screen_width // 2 - 150, 300, 300, 80)
-        quit_button = pygame.Rect(self.screen_width // 2 - 150, 420, 300, 80)
 
-        self.buttons.append({"rect": play_button, "text": font.render("PLAY", True, (255, 255, 255))})
-        self.buttons.append({"rect": quit_button, "text": font.render("QUIT", True, (255, 255, 255))})
+        # Vérifie si setup.json existe et contient des données
+        continue_exists = False
+        if os.path.exists("setup.json"):
+            try:
+                with open("setup.json", "r", encoding="utf-8") as f:
+                    data = f.read().strip()
+                    if data and data != "{}":
+                        continue_exists = True
+            except Exception:
+                continue_exists = False
+
+        # Crée les boutons
+        play_rect = pygame.Rect(self.WIDTH // 2 - 150, 300, 300, 80)
+        quit_rect = pygame.Rect(self.WIDTH // 2 - 150, 420, 300, 80)
+        self.buttons.append({"rect": play_rect, "text": font.render("NOUVELLE PARTIE", True, (255, 255, 255)), "action": "new"})
+        if continue_exists:
+            cont_rect = pygame.Rect(self.WIDTH // 2 - 150, 520, 300, 80)
+            self.buttons.append({"rect": cont_rect, "text": font.render("CONTINUER", True, (255, 255, 255)), "action": "continue"})
+        self.buttons.append({"rect": quit_rect, "text": font.render("QUITTER", True, (255, 255, 255)), "action": "quit"})
 
     def handle_events(self, event):
         if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
-            mouse_pos = pygame.mouse.get_pos()
-            for i, button in enumerate(self.buttons):
-                if button["rect"].collidepoint(mouse_pos):
-                    if i == 0:  # PLAY
-                        print("Play clicked")
-                        self.game.change_page("map")  # 👉 Passe au choix de map
-                    elif i == 1:  # QUIT
-                        print("Quit clicked")
+            pos = pygame.mouse.get_pos()
+            for button in self.buttons:
+                if button["rect"].collidepoint(pos):
+                    action = button["action"]
+                    if action == "new":
+                        print("🆕 Nouvelle partie")
+                        # Efface le setup.json
+                        with open("setup.json", "w", encoding="utf-8") as f:
+                            json.dump({}, f, indent=2)
+                        self.game.change_page("map")
+                    elif action == "continue":
+                        print("⏩ Continuer la partie")
+                        self.game.change_page("player")
+                    elif action == "quit":
                         self.game.running = False
 
     def update(self):

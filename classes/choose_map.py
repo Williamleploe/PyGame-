@@ -1,5 +1,6 @@
 import pygame
 import json
+import os
 pygame.init()
 
 class Choose_map:
@@ -11,37 +12,17 @@ class Choose_map:
         self.background = None
         self.text = None
         self.text_rect = None
-        self.maps = []
-
-        self.load_maps()
+        self.maps = [
+            {"name": "cave_1", "background": "assets/background/cave_1/Preview 1.png", "plan": "assets/background/cave_1/Plan 1.png"},
+            {"name": "jungle_1", "background": "assets/background/jungle_1/Preview 1.png", "plan": "assets/background/jungle_1/Plan 1.png"}
+        ]
         self.setup_background()
         self.setup_text()
         self.create_buttons()
 
-    def load_maps(self):
-        try:
-            with open("maps.json", "r") as f:
-                self.maps = json.load(f)
-        except Exception as e:
-            print("Erreur lors du chargement du fichier maps.json :", e)
-            # Fallback si maps.json est absent
-            self.maps = [
-                {"name": "cave_1"},
-                {"name": "cave_2"},
-                {"name": "jungle_1"},
-                {"name": "jungle_2"}
-            ]
-
     def setup_background(self):
-        try:
-            # ✅ On utilise maintenant ton image “orig_big.png”
-            self.background = pygame.image.load("assets/background/back/4 background/orig_big.png").convert()
-            self.background = pygame.transform.scale(self.background, (self.Width, self.Height))
-        except Exception as e:
-            print("Erreur lors du chargement du fond :", e)
-            # Couleur de secours
-            self.background = pygame.Surface((self.Width, self.Height))
-            self.background.fill((20, 20, 20))
+        self.background = pygame.Surface((self.Width, self.Height))
+        self.background.fill((20, 20, 20))
 
     def setup_text(self):
         font = pygame.font.Font(None, 80)
@@ -50,39 +31,31 @@ class Choose_map:
 
     def create_buttons(self):
         font = pygame.font.Font(None, 50)
-        button_width = 250
-        button_height = 80
-        spacing = 50
-        total_width = len(self.maps) * (button_width + spacing) - spacing
-        start_x = (self.Width - total_width) // 2
-        y = self.Height // 2
-
-        for i, map_info in enumerate(self.maps):
-            rect = pygame.Rect(start_x + i * (button_width + spacing), y, button_width, button_height)
-            text_surface = font.render(map_info["name"], True, (255, 0, 0))
+        x, y = 300, 250
+        for m in self.maps:
+            rect = pygame.Rect(x, y, 300, 100)
+            text_surface = font.render(m["name"], True, (255, 0, 0))
             text_rect = text_surface.get_rect(center=rect.center)
-            self.buttons.append({
-                "name": map_info["name"],
-                "rect": rect,
-                "text": text_surface,
-                "text_rect": text_rect
-            })
+            self.buttons.append({"rect": rect, "name": m["name"], "text": text_surface, "text_rect": text_rect, "data": m})
+            y += 150
 
     def handle_events(self, event):
         if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
-            mouse_pos = pygame.mouse.get_pos()
+            pos = pygame.mouse.get_pos()
             for button in self.buttons:
-                if button["rect"].collidepoint(mouse_pos):
-                    print(f"Map '{button['name']}' cliquée !")
-                    print(f"✔ Carte sélectionnée : {button['name']}")
-                    self.game.selected_map = button["name"]
+                if button["rect"].collidepoint(pos):
+                    print(f"Map '{button['name']}' choisie !")
+                    self.save_map_choice(button["data"])
+                    self.game.change_page("player")
 
-                    # ✅ Passe à l'écran de sélection de personnages
-                    self.game.current_page = self.game.Choose_Player
-                    self.game.Choose_Player.update()
+    def save_map_choice(self, map_data):
+        data = {"map": {"background": map_data["background"], "plan": map_data["plan"]}, "players": []}
+        with open("setup.json", "w", encoding="utf-8") as f:
+            json.dump(data, f, indent=2)
+        print("💾 Map sauvegardée dans setup.json")
 
     def update(self):
-        pass  # Pas de mise à jour dynamique ici
+        pass
 
     def draw(self, screen):
         screen.blit(self.background, (0, 0))
