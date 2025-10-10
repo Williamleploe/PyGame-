@@ -1,0 +1,16 @@
+il reste la page de fin apres avoir gagner , la sauvegarde du combat dans un json , puis le reouvrir apres les play du main_menu
+il reste le son a mettre , et le soucis de background dans le choix des personnage , 
+Facultatif : Regler le probleme d'affichage des projectiles et des ranges 
+
+Grace au choix de personnage , faut initialiser le jeu avec les donnees necessaire :
+    - Le background de la map selectionner 
+    - le plan 1 de la map selectionner 
+    - le choix des joueurs (personnages)
+
+Pour la sauvegarde :
+    - Le background de la map selectionner 
+    - le plan 1 de la map selectionner 
+    - le choix des joueurs (personnages)
+    - la vie de chaque joueurs 
+    - le mana de chaque joueurs 
+    - le score 

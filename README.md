@@ -1,2 +1,2 @@
 # PyGame-
-Création d'un jeux
+Création d'un jeux en Pygame
