@@ -1,8 +1,8 @@
 {
     "map": {
-        "name": "jungle_1",
-        "background": "assets/background/jungle_1/Preview 1.png",
-        "plan": "assets/background/jungle_1/Plan 1.png"
+        "name": "cave_1",
+        "background": "assets/background/cave_1/Preview 1.png",
+        "plan": "assets/background/cave_1/Plan 1.png"
     },
     "players": [
         {
@@ -25,11 +25,11 @@
         },
         {
             "id": 2,
-            "name": "Converted_Vampire",
-            "path": "assets/perso/Converted_Vampire",
-            "idle_image": "assets/perso/Converted_Vampire/idle/00.png",
+            "name": "Countess_Vampire",
+            "path": "assets/perso/Countess_Vampire",
+            "idle_image": "assets/perso/Countess_Vampire/idle/00.png",
             "position": "right",
-            "type_personnage": "melee",
+            "type_personnage": "range",
             "health": 100,
             "energy": 100,
             "score": 0,
