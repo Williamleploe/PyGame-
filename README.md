@@ -1,4 +1,4 @@
-# 🥊 Fighting Game Project (Pygame)
+# 🥊 Jeu de Combat - Albertos vs Albertas (Pygame)
 
 Un jeu de combat en **Python** développé avec **Pygame**, inspiré de *Street Fighter* et *Mortal Kombat*.  
 Ce projet a été réalisé dans le cadre d’un **projet noté** en deuxième année d’informatique.  
